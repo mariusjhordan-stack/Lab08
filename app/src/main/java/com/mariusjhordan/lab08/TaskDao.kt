@@ -12,10 +12,13 @@ interface TaskDao {
     suspend fun getAllTasks(): List<Task>
     // Insertar una nueva tarea
     @Insert
-    suspend fun insertTask(task: Task)
+    suspend fun insertTask(task: Task): Long
     // Marcar una tarea como completada o no completada
     @Update
     suspend fun updateTask(task: Task)
+    // Eliminar una tarea individual
+    @androidx.room.Delete
+    suspend fun deleteTask(task: Task)
     // Eliminar todas las tareas
     @Query("DELETE FROM tasks")
     suspend fun deleteAllTasks()
